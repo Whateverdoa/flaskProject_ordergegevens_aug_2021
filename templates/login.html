@@ -1,0 +1,32 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+{% if name %}
+
+    <h1> Welkom {{ name }} </h1>
+
+{% else  %}
+
+    <div style="text-align: left;">
+    <h6>login</h6></div>
+    <br/>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+        <br/>
+        <br/>
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+        <br/>
+        <br/>
+
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+
+{% endif %}
+
+
+{%  endblock %}
