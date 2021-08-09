@@ -1,0 +1,80 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+    {% for message in get_flashed_messages() %}
+
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+         <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    {% endfor %}
+
+{% if name %}
+
+    <h6> Welkom {{ name|title }} </h6>
+
+<table class="table table-hover table-bordered table-striped">
+
+
+        {% for item in our_users%}
+            <tr>
+            <td>
+            {{ item.id }} - {{ item.name }}
+            <td/>
+            <tr/>
+
+
+    {%  endfor %}
+</table>
+
+{% else  %}
+
+    <div style="text-align: left;">
+    <h5>gebruiker toevoegen</h5></div>
+    <br/>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+        <br/>
+        <br/>
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+        <br/>
+        <br/>
+
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+
+
+
+    <br/>
+    <br/>
+    <br/>
+    <table class="table table-hover table-bordered table-striped">
+    {% for item in our_users%}
+
+        <tr>
+        <td>
+
+{#            <div class="alert alert-primary" role="alert">#}
+            {{ item.id }} - {{ item.name }} - {{ item.email }}
+{#            </div>#}
+
+        </td>
+
+        </tr>
+
+
+
+
+    {%  endfor %}
+
+    {% endif %}
+
+
+{%  endblock %}
