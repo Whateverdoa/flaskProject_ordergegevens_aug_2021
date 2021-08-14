@@ -8,6 +8,7 @@ from wtforms.validators import DataRequired, Email
 class NamerForm(FlaskForm):
     name = StringField('Name:', validators=[DataRequired()])
     email = StringField('Email:', validators=[DataRequired()])
+    favorite_color = StringField('favorite_color:')
 
     submit = SubmitField('Submit')
 
@@ -15,6 +16,8 @@ class NamerForm(FlaskForm):
 class UserForm(FlaskForm):
     name = StringField('Name:', validators=[DataRequired()])
     email = StringField('Email:', validators=[DataRequired()])
+
+    favorite_color = StringField('favorite_color:' )
 
     submit = SubmitField('Submit')
 
